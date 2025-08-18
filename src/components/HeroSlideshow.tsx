@@ -91,6 +91,14 @@ const HeroSlideshow = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 text-white">
             <div className="space-y-6">
+              {/* Logo */}
+              <div className="mb-6">
+                <img 
+                  src="/lovable-uploads/43b928d8-0380-45af-a37c-f175d89e96b2.png" 
+                  alt="O.A.S.I.S MEDICALS" 
+                  className="h-24 md:h-32 mx-auto lg:mx-0 mb-4"
+                />
+              </div>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-white">{slides[currentSlide].title.split(' ').slice(0, -3).join(' ')} </span>
                 <span className="bg-gradient-to-r from-medical-cyan to-medical-magenta bg-clip-text text-transparent">

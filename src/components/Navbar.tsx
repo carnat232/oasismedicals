@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -61,10 +65,35 @@ const Navbar = () => {
             <Phone className="w-4 h-4 mr-2" />
             Call Now
           </Button>
-          <Button onClick={openWhatsApp} className="bg-gradient-to-r from-medical-cyan to-medical-magenta hover:opacity-90">
-            <MessageCircle className="w-4 h-4 mr-2" />
-            Book Test
-          </Button>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="outline"
+                size="sm"
+                onClick={() => navigate('/dashboard')}
+              >
+                Dashboard
+              </Button>
+              <Button onClick={openWhatsApp} className="bg-gradient-to-r from-medical-cyan to-medical-magenta hover:opacity-90">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Book Test
+              </Button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="outline"
+                size="sm"
+                onClick={() => navigate('/auth')}
+              >
+                Patient Login
+              </Button>
+              <Button onClick={openWhatsApp} className="bg-gradient-to-r from-medical-cyan to-medical-magenta hover:opacity-90">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Book Test
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </nav>
