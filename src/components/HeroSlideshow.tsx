@@ -94,7 +94,7 @@ const HeroSlideshow = () => {
               {/* Logo */}
               <div className="mb-6">
                 <img 
-                  src="/lovable-uploads/43b928d8-0380-45af-a37c-f175d89e96b2.png" 
+                  src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
                   alt="O.A.S.I.S MEDICALS" 
                   className="h-24 md:h-32 mx-auto lg:mx-0 mb-4"
                 />
