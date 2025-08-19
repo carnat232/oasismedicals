@@ -3,30 +3,9 @@ import { useState, useEffect } from "react";
 interface NavigationLoaderProps {
   isVisible: boolean;
   targetSection?: string;
-  onComplete?: () => void;
 }
 
-const NavigationLoader = ({ isVisible, targetSection, onComplete }: NavigationLoaderProps) => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (isVisible) {
-      setProgress(0);
-      const interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            setTimeout(() => onComplete?.(), 200);
-            return 100;
-          }
-          return prev + 5;
-        });
-      }, 30);
-
-      return () => clearInterval(interval);
-    }
-  }, [isVisible, onComplete]);
-
+const NavigationLoader = ({ isVisible, targetSection }: NavigationLoaderProps) => {
   if (!isVisible) return null;
 
   return (
@@ -57,19 +36,9 @@ const NavigationLoader = ({ isVisible, targetSection, onComplete }: NavigationLo
         {/* Navigation Info */}
         {targetSection && (
           <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-white/90 text-lg mb-4">
+            <p className="text-white/90 text-lg">
               Navigating to {targetSection}
             </p>
-            
-            {/* Progress Bar */}
-            <div className="w-64 mx-auto bg-white/20 rounded-full h-2 overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-white to-white/80 transition-all duration-300 ease-out"
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
-            
-            <p className="text-white/70 text-sm mt-2">{progress}%</p>
           </div>
         )}
 

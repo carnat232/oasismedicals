@@ -12,15 +12,16 @@ const Navbar = () => {
   const [targetSection, setTargetSection] = useState<string>("");
 
   const scrollToSection = (sectionId: string) => {
+    // Show animation briefly then scroll
     setTargetSection(sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
     setIsNavigating(true);
-  };
-
-  const handleNavigationComplete = () => {
-    setIsNavigating(false);
-    const sectionId = targetSection.toLowerCase();
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    setTargetSection("");
+    
+    // Quick animation then scroll
+    setTimeout(() => {
+      setIsNavigating(false);
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      setTargetSection("");
+    }, 800);
   };
 
   const openWhatsApp = () => {
@@ -115,7 +116,6 @@ const Navbar = () => {
       <NavigationLoader 
         isVisible={isNavigating}
         targetSection={targetSection}
-        onComplete={handleNavigationComplete}
       />
     </nav>
   );
