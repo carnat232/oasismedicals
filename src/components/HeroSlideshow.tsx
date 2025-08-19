@@ -92,7 +92,7 @@ const HeroSlideshow = () => {
           <div className="space-y-8 text-white">
             <div className="space-y-6">
               {/* Logo */}
-              <div className="mb-6">
+              <div className="mb-8 mt-4">
                 <img 
                   src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
                   alt="O.A.S.I.S MEDICALS" 
