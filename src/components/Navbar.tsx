@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
@@ -11,15 +12,13 @@ const Navbar = () => {
   const [isNavigating, setIsNavigating] = useState(false);
   const [targetSection, setTargetSection] = useState<string>("");
 
-  const scrollToSection = (sectionId: string) => {
-    // Show animation briefly then scroll
-    setTargetSection(sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
+  const handleNavigation = (path: string, sectionName: string) => {
+    setTargetSection(sectionName);
     setIsNavigating(true);
     
-    // Quick animation then scroll
     setTimeout(() => {
       setIsNavigating(false);
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      navigate(path);
       setTargetSection("");
     }, 800);
   };
@@ -31,7 +30,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3">
           <img 
             src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
             alt="O.A.S.I.S MEDICALS" 
@@ -41,35 +40,35 @@ const Navbar = () => {
             <h1 className="text-xl font-bold text-foreground">O.A.S.I.S. MEDICALS</h1>
             <p className="text-xs text-muted-foreground">...Your Health is our concern.</p>
           </div>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center space-x-8">
           <button 
-            onClick={() => scrollToSection('home')}
+            onClick={() => handleNavigation('/', 'Home')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Home
           </button>
           <button 
-            onClick={() => scrollToSection('services')}
+            onClick={() => handleNavigation('/services', 'Services')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Services
           </button>
           <button 
-            onClick={() => scrollToSection('pricing')}
+            onClick={() => handleNavigation('/pricing', 'Pricing')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Pricing
           </button>
           <button 
-            onClick={() => scrollToSection('about')}
+            onClick={() => handleNavigation('/about', 'About')}
             className="text-foreground hover:text-primary transition-colors"
           >
             About
           </button>
           <button 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => handleNavigation('/contact', 'Contact')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Contact
