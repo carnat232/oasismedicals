@@ -36,9 +36,11 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-medical-cyan to-medical-magenta rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">O</span>
-              </div>
+              <img 
+                src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+                alt="O.A.S.I.S MEDICALS" 
+                className="h-12 w-auto hover-scale"
+              />
               <div>
                 <h3 className="text-xl font-bold text-foreground">O.A.S.I.S. MEDICALS</h3>
                 <p className="text-sm text-muted-foreground">...Your Health is our concern.</p>

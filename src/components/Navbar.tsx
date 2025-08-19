@@ -1,13 +1,26 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import NavigationLoader from "./NavigationLoader";
 
 const Navbar = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [isNavigating, setIsNavigating] = useState(false);
+  const [targetSection, setTargetSection] = useState<string>("");
+
   const scrollToSection = (sectionId: string) => {
+    setTargetSection(sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
+    setIsNavigating(true);
+  };
+
+  const handleNavigationComplete = () => {
+    setIsNavigating(false);
+    const sectionId = targetSection.toLowerCase();
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setTargetSection("");
   };
 
   const openWhatsApp = () => {
@@ -17,10 +30,12 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-gradient-to-r from-medical-cyan to-medical-magenta rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">O</span>
-          </div>
+        <div className="flex items-center space-x-3">
+          <img 
+            src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+            alt="O.A.S.I.S MEDICALS" 
+            className="h-10 w-auto hover-scale"
+          />
           <div>
             <h1 className="text-xl font-bold text-foreground">O.A.S.I.S. MEDICALS</h1>
             <p className="text-xs text-muted-foreground">...Your Health is our concern.</p>
@@ -96,6 +111,12 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      
+      <NavigationLoader 
+        isVisible={isNavigating}
+        targetSection={targetSection}
+        onComplete={handleNavigationComplete}
+      />
     </nav>
   );
 };

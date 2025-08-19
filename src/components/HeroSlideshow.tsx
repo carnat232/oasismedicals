@@ -96,7 +96,7 @@ const HeroSlideshow = () => {
                 <img 
                   src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
                   alt="O.A.S.I.S MEDICALS" 
-                  className="h-24 md:h-32 mx-auto lg:mx-0 mb-4"
+                  className="h-32 md:h-40 lg:h-48 mx-auto lg:mx-0 mb-4 animate-fade-in"
                 />
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
