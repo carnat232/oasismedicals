@@ -88,15 +88,15 @@ const HeroSlideshow = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 text-white">
+        <div className="flex flex-col items-center text-center space-y-8">
+          <div className="space-y-8 text-white max-w-4xl">
             <div className="space-y-6">
               {/* Logo */}
               <div className="mb-8 mt-4">
                 <img 
                   src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
                   alt="O.A.S.I.S MEDICALS" 
-                  className="h-32 md:h-40 lg:h-48 mx-auto lg:mx-0 mb-4 animate-fade-in"
+                  className="h-32 md:h-40 lg:h-48 mx-auto mb-4 animate-fade-in"
                 />
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
@@ -105,12 +105,12 @@ const HeroSlideshow = () => {
                   {slides[currentSlide].title.split(' ').slice(-3).join(' ')}
                 </span>
               </h1>
-              <p className="text-xl text-white/90 leading-relaxed">
+              <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
                 {slides[currentSlide].subtitle}
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Button 
                 onClick={openWhatsApp}
                 size="lg" 
@@ -130,7 +130,7 @@ const HeroSlideshow = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 max-w-3xl mx-auto">
               <Card className="p-6 text-center border border-white/20 bg-white/10 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">10,000+</div>
                 <div className="text-sm text-white/80">Tests Conducted</div>
@@ -147,65 +147,63 @@ const HeroSlideshow = () => {
           </div>
 
           {/* Slideshow Controls */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="space-y-6">
-              {/* Navigation Buttons */}
-              <div className="flex items-center justify-center space-x-4">
-                <Button
-                  onClick={prevSlide}
-                  variant="outline"
-                  size="icon"
-                  className="bg-white/20 border-white/30 text-white hover:bg-white hover:text-primary"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-                
-                <Button
-                  onClick={togglePlayPause}
-                  variant="outline"
-                  size="icon"
-                  className="bg-white/20 border-white/30 text-white hover:bg-white hover:text-primary"
-                >
-                  {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-                </Button>
-                
-                <Button
-                  onClick={nextSlide}
-                  variant="outline"
-                  size="icon"
-                  className="bg-white/20 border-white/30 text-white hover:bg-white hover:text-primary"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
-              </div>
-
-              {/* Slide Indicators */}
-              <div className="flex items-center justify-center space-x-2">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentSlide 
-                        ? 'bg-gradient-to-r from-medical-cyan to-medical-magenta' 
-                        : 'bg-white/40 hover:bg-white/60'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              {/* Slide Info */}
-              <Card className="p-4 bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="text-center text-white">
-                  <div className="text-sm opacity-80 mb-1">
-                    Slide {currentSlide + 1} of {slides.length}
-                  </div>
-                  <div className="font-medium">
-                    {slides[currentSlide].title.split(' ').slice(0, 2).join(' ')}
-                  </div>
-                </div>
-              </Card>
+          <div className="space-y-6">
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-center space-x-4">
+              <Button
+                onClick={prevSlide}
+                variant="outline"
+                size="icon"
+                className="bg-white/20 border-white/30 text-white hover:bg-white hover:text-primary"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </Button>
+              
+              <Button
+                onClick={togglePlayPause}
+                variant="outline"
+                size="icon"
+                className="bg-white/20 border-white/30 text-white hover:bg-white hover:text-primary"
+              >
+                {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+              </Button>
+              
+              <Button
+                onClick={nextSlide}
+                variant="outline"
+                size="icon"
+                className="bg-white/20 border-white/30 text-white hover:bg-white hover:text-primary"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </Button>
             </div>
+
+            {/* Slide Indicators */}
+            <div className="flex items-center justify-center space-x-2">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'bg-gradient-to-r from-medical-cyan to-medical-magenta' 
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Slide Info */}
+            <Card className="p-4 bg-white/10 backdrop-blur-sm border border-white/20">
+              <div className="text-center text-white">
+                <div className="text-sm opacity-80 mb-1">
+                  Slide {currentSlide + 1} of {slides.length}
+                </div>
+                <div className="font-medium">
+                  {slides[currentSlide].title.split(' ').slice(0, 2).join(' ')}
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
