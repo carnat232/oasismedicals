@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, Calendar, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
-import heroImage from "@/assets/hero-medical.jpg";
-import slideUltrasound from "@/assets/slide-ultrasound.jpg";
-import slideLaboratory from "@/assets/slide-laboratory.jpg";
-import slideXray from "@/assets/slide-xray.jpg";
+// Using client's professional medical facility photos
+const heroImage = "/lovable-uploads/4cf12c56-a1eb-44b5-a99a-2518e2e2faa6.png";
+const slideUltrasound = "/lovable-uploads/6012a936-a727-4f53-844d-5db87131386b.png";  
+const slideLaboratory = "/lovable-uploads/8960ec25-3a43-493a-8dd2-da5b605beca0.png";
+const slideXray = "/lovable-uploads/a8f39a80-491f-4105-ba93-59e1e8e84f10.png";
 
 const HeroSlideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -79,7 +80,7 @@ const HeroSlideshow = () => {
             <img 
               src={slide.image} 
               alt={slide.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl shadow-xl"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30"></div>
           </div>
