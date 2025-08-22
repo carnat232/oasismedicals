@@ -55,11 +55,18 @@ const Services = () => {
           </p>
           
           {/* Service Information Image */}
-          <div className="max-w-md mx-auto mb-8">
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
             <Card className="overflow-hidden">
               <img 
-                src="/lovable-uploads/2cc29c8d-32c8-40e9-bfd5-6f67fc90db01.png" 
-                alt="Medical tests information display at OASIS Medical Center"
+                src="/lovable-uploads/4d43166a-faad-4a5e-a548-255e51070483.png" 
+                alt="Laboratory technician using microscope at OASIS Medical Center"
+                className="w-full h-48 object-cover rounded-2xl shadow-xl"
+              />
+            </Card>
+            <Card className="overflow-hidden">
+              <img 
+                src="/lovable-uploads/3f2ea8ce-8e6d-4383-9fce-900ffef57f89.png" 
+                alt="Patient consultation and service at OASIS Medical Center reception"
                 className="w-full h-48 object-cover rounded-2xl shadow-xl"
               />
             </Card>

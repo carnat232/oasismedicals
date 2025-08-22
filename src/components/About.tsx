@@ -57,8 +57,8 @@ const About = () => {
             <Card className="overflow-hidden h-full">
               <div className="relative h-full min-h-[400px]">
                 <img 
-                  src="/lovable-uploads/3c23b98d-12a0-41d7-aebe-7888d9e56ebc.png" 
-                  alt="OASIS Medical facility waiting area with patients"
+                  src="/lovable-uploads/b37e74d6-ddb5-4e25-ac78-9c8350905184.png" 
+                  alt="OASIS Medical professional team photo"
                   className="w-full h-full object-cover rounded-2xl shadow-xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
