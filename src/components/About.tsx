@@ -50,27 +50,44 @@ const About = () => {
           </p>
         </div>
 
-        {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {visionMission.map((item, index) => {
-            const IconComponent = item.icon;
-            return (
-              <Card key={index} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <CardContent className="p-8 relative">
-                  <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-medical-cyan to-medical-magenta rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-8 h-8 text-white" />
+        {/* Vision & Mission with Image */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-20">
+          {/* Facility Image */}
+          <div className="lg:col-span-1">
+            <Card className="overflow-hidden h-full">
+              <div className="relative h-full min-h-[400px]">
+                <img 
+                  src="/lovable-uploads/3c23b98d-12a0-41d7-aebe-7888d9e56ebc.png" 
+                  alt="OASIS Medical facility waiting area with patients"
+                  className="w-full h-full object-cover rounded-2xl shadow-xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+              </div>
+            </Card>
+          </div>
+          
+          {/* Vision & Mission Cards */}
+          <div className="lg:col-span-2 space-y-6">
+            {visionMission.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <Card key={index} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardContent className="p-8 relative">
+                    <div className="flex items-start space-x-6">
+                      <div className="w-16 h-16 bg-gradient-to-r from-medical-cyan to-medical-magenta rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold mb-4 text-foreground">{item.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-4 text-foreground">{item.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{item.content}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
 
         {/* Why Choose OASIS */}

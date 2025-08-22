@@ -212,20 +212,28 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Map Section */}
+        {/* Location Section with Clinic Image */}
         <Card className="overflow-hidden">
           <CardContent className="p-0">
-            <div className="h-64 bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 mx-auto mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">Visit Our Diagnostic Center</h3>
-                <p className="text-muted-foreground">Located in Ifo, Ogun State</p>
-                <Button 
-                  onClick={() => window.open('https://maps.google.com', '_blank')}
-                  className="mt-4 bg-gradient-to-r from-medical-cyan to-medical-magenta hover:opacity-90"
-                >
-                  Get Directions
-                </Button>
+            <div className="relative h-80">
+              <img 
+                src="/lovable-uploads/8047a331-d422-41ec-9a8a-ca357f059dd9.png" 
+                alt="OASIS Medical Center building exterior"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="text-center text-white">
+                  <MapPin className="w-12 h-12 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Visit Our Diagnostic Center</h3>
+                  <p className="text-white/90 mb-4">Located in Ifo, Ogun State</p>
+                  <Button 
+                    onClick={() => window.open('https://maps.google.com', '_blank')}
+                    className="bg-gradient-to-r from-medical-cyan to-medical-magenta hover:opacity-90"
+                  >
+                    Get Directions
+                  </Button>
+                </div>
               </div>
             </div>
           </CardContent>

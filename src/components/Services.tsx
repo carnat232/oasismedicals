@@ -50,9 +50,20 @@ const Services = () => {
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Our <span className="bg-gradient-to-r from-medical-cyan to-medical-magenta bg-clip-text text-transparent">Services</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Comprehensive diagnostic services with state-of-the-art equipment and experienced medical professionals
           </p>
+          
+          {/* Service Information Image */}
+          <div className="max-w-md mx-auto mb-8">
+            <Card className="overflow-hidden">
+              <img 
+                src="/lovable-uploads/2cc29c8d-32c8-40e9-bfd5-6f67fc90db01.png" 
+                alt="Medical tests information display at OASIS Medical Center"
+                className="w-full h-48 object-cover rounded-2xl shadow-xl"
+              />
+            </Card>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
