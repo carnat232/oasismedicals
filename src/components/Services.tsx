@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, TestTube, Activity, X, ArrowRight, Star } from "lucide-react";
+import { Heart, TestTube, Activity, X, ArrowRight, Star, Users, Thermometer, UserCheck, Stethoscope } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -19,6 +19,46 @@ const Services = () => {
       description: "Complete laboratory services with accurate and timely results",
       features: ["Blood Chemistry", "Microbiology", "Hormonal Profiles", "Histology"],
       priceRange: "Varies by test",
+      popular: false
+    },
+    {
+      icon: Thermometer,
+      title: "Fever Packages",
+      description: "Know the cause of your reoccurring fever and get proper treatment",
+      features: ["Basic Package", "Standard Package", "Malaria Testing", "Typhoid Testing"],
+      priceRange: "₦15,000 - ₦30,000",
+      popular: true
+    },
+    {
+      icon: Users,
+      title: "Full Body Checkup",
+      description: "Comprehensive health screening for men and women",
+      features: ["Opal Package", "Ruby Package", "Diamond Package", "Complete Health Assessment"],
+      priceRange: "₦45,000 - ₦200,000",
+      popular: true
+    },
+    {
+      icon: Heart,
+      title: "Fertility/Hormonal Tests",
+      description: "Know, track and understand your fertility status",
+      features: ["Basic Testing", "Standard Testing", "Comprehensive Testing", "Hormone Profiling"],
+      priceRange: "₦15,000 - ₦150,000",
+      popular: false
+    },
+    {
+      icon: UserCheck,
+      title: "Pre-marital Screening",
+      description: "Essential health evaluations before your wedding day",
+      features: ["Basic Testing", "Standard Testing", "Comprehensive Testing", "Genotype Testing"],
+      priceRange: "₦12,000 - ₦120,000",
+      popular: false
+    },
+    {
+      icon: Stethoscope,
+      title: "Domestic Staff Screening",
+      description: "Health screening for household employees",
+      features: ["Basic Package", "Standard Package", "HIV Testing", "Hepatitis Screening"],
+      priceRange: "₦20,000 - ₦30,000",
       popular: false
     },
     {
@@ -73,7 +113,7 @@ const Services = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (

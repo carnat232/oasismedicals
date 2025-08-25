@@ -3,13 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Input } from "@/components/ui/input";
-import { Heart, TestTube, Activity, X, Search, ChevronDown, MessageCircle } from "lucide-react";
+import { Heart, TestTube, Activity, X, Search, ChevronDown, MessageCircle, Thermometer, Users, UserCheck, Stethoscope } from "lucide-react";
 import { useState } from "react";
 
 const PricingDetails = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openCategories, setOpenCategories] = useState<{ [key: string]: boolean }>({
-    ultrasound: true
+    ultrasound: true,
+    fever: true,
+    menPackages: true
   });
 
   const toggleCategory = (category: string) => {
@@ -20,6 +22,61 @@ const PricingDetails = () => {
   };
 
   const pricingData = {
+    fever: {
+      title: "Fever Packages",
+      icon: Thermometer,
+      color: "from-orange-500 to-red-500",
+      tests: [
+        { name: "Basic Package (FBC, Malaria Test, WIDAL, Urinalysis)", price: "₦15,000" },
+        { name: "Standard Package (ESR, FBC, Malaria, WIDAL, Stool Microscopy, Urinalysis, Sputum AFB)", price: "₦30,000" }
+      ]
+    },
+    menPackages: {
+      title: "Men's Health Packages",
+      icon: Users,
+      color: "from-blue-600 to-blue-800",
+      tests: [
+        { name: "Full Body Checkup (Opal) - FBS, Total Cholesterol, FBC, Urinalysis, LFT, KFT", price: "₦45,000" },
+        { name: "Full Body Checkup (Ruby) - FBS, Lipid Profile, FBC, PSA, Stool Microscopy, Urinalysis, LFT, KFT", price: "₦80,000" },
+        { name: "Full Body Checkup (Diamond) - Complete comprehensive screening with HbA1C, Lipid Profile, LFT, KFT, CRP, TFT, FBC, PSA, Hepatitis B/C, HIV, Stool tests, Urinalysis", price: "₦180,000" },
+        { name: "Fertility/Hormonal Tests (Basic) - Seminal Fluid Analysis, Semen M/C/S", price: "₦15,000" },
+        { name: "Fertility/Hormonal Tests (Standard) - FSH, LH, Testosterone, Seminal Fluid Analysis, Semen M/C/S", price: "₦60,000" },
+        { name: "Erectile Dysfunction Package - FBS, FSH, LH, Prolactin, Testosterone, Seminal Fluid Analysis, Semen M/C/S", price: "₦100,000" }
+      ]
+    },
+    womenPackages: {
+      title: "Women's Health Packages",
+      icon: Heart,
+      color: "from-pink-500 to-rose-600",
+      tests: [
+        { name: "Full Body Checkup (Opal) - FBS, Total Cholesterol, FBC, Urinalysis, LFT, KFT", price: "₦45,000" },
+        { name: "Full Body Checkup (Ruby) - FBS, Lipid Profile, FBC, Stool Microscopy, Urinalysis, LFT, KFT", price: "₦70,000" },
+        { name: "Full Body Checkup (Diamond) - Complete comprehensive screening with HbA1C, Lipid Profile, LFT, KFT, CRP, TFT, FBC, Hepatitis B/C, HIV, Stool tests, Urinalysis, LBC", price: "₦200,000" },
+        { name: "Fertility/Hormonal Tests (Basic) - Estradiol, FSH, LH, Prolactin", price: "₦40,000" },
+        { name: "Fertility/Hormonal Tests (Standard) - Estradiol, FSH, LH, Progesterone, Prolactin", price: "₦55,000" },
+        { name: "Fertility/Hormonal Tests (Comprehensive) - TSH, Estradiol, FSH, LH, Progesterone, Prolactin, AMH", price: "₦150,000" }
+      ]
+    },
+    domesticStaff: {
+      title: "Domestic Staff Screening",
+      icon: UserCheck,
+      color: "from-green-600 to-emerald-600",
+      tests: [
+        { name: "Basic Package - PCV, HBsAg, HIV I & II, Pregnancy Test (female), Sputum AFB, Hepatitis A", price: "₦20,000" },
+        { name: "Standard Package - Hb Electrophoresis/Genotype, PCV, HBsAg, HIV I & II, Pregnancy Test (female), HCV, Sputum AFB, Hepatitis A", price: "₦30,000" }
+      ]
+    },
+    premarital: {
+      title: "Pre-marital Screening",
+      icon: Heart,
+      color: "from-purple-600 to-violet-600",
+      tests: [
+        { name: "Basic (Male & Female) - Blood Grouping, Genotype, HBsAg, HIV I & II", price: "₦12,000" },
+        { name: "Standard (Male & Female) - Blood Grouping, Genotype, FBC, HBsAg, HCV, HIV I & II, Pregnancy Test (female)", price: "₦20,000" },
+        { name: "Comprehensive (Female) - Blood Grouping, Genotype, FBC, FSH, LH, Prolactin, Progesterone, HBsAg, HCV, HIV I & II, Pregnancy Test", price: "₦100,000" },
+        { name: "Comprehensive (Male) - Blood Grouping, Genotype, FBC, FSH, LH, Testosterone, HBsAg, HCV, HIV I & II, Seminal Fluid Analysis, Semen M/C/S", price: "₦120,000" }
+      ]
+    },
     ultrasound: {
       title: "Ultrasound Scan",
       icon: Heart,
