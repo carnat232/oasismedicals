@@ -73,6 +73,12 @@ const Navbar = () => {
           >
             Contact
           </button>
+          <button 
+            onClick={() => handleNavigation('/gallery', 'Gallery')}
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Gallery
+          </button>
         </div>
 
         <div className="flex items-center space-x-2">
