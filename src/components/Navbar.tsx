@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import NavigationLoader from "./NavigationLoader";
+import PremiumLoadingScreen from "./PremiumLoadingScreen";
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -121,9 +121,9 @@ const Navbar = () => {
         </div>
       </div>
       
-      <NavigationLoader 
+      <PremiumLoadingScreen 
         isVisible={isNavigating}
-        targetSection={targetSection}
+        message={`Navigating to ${targetSection}`}
       />
     </nav>
   );

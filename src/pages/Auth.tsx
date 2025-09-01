@@ -104,12 +104,15 @@ const Auth = () => {
         {/* Header Section */}
         <div className="text-center mb-8 animate-fade-in">
           <div className="relative inline-block mb-6">
-            <img 
-              src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
-              alt="O.A.S.I.S MEDICALS" 
-              className="h-20 mx-auto drop-shadow-lg hover:scale-105 transition-transform duration-300"
-            />
-            <div className="absolute -inset-4 bg-gradient-to-r from-medical-cyan/20 to-medical-magenta/20 rounded-full blur-xl opacity-60"></div>
+            <div className="relative overflow-hidden rounded-full p-2">
+              <img 
+                src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+                alt="O.A.S.I.S MEDICALS" 
+                className="h-20 mx-auto animate-premium-spin filter drop-shadow-2xl"
+              />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent animate-premium-shimmer"></div>
+            </div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-medical-cyan/20 to-medical-magenta/20 rounded-full blur-xl opacity-60 animate-premium-glow"></div>
           </div>
           <h1 className="text-3xl font-bold text-foreground mb-2 bg-gradient-to-r from-medical-cyan to-medical-magenta bg-clip-text text-transparent">
             Patient Portal
@@ -182,7 +185,11 @@ const Auth = () => {
                   >
                     {loading ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <img 
+                          src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+                          alt="Loading" 
+                          className="w-4 h-4 animate-premium-spin"
+                        />
                         Signing in...
                       </div>
                     ) : (
@@ -281,7 +288,11 @@ const Auth = () => {
                   >
                     {loading ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <img 
+                          src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+                          alt="Loading" 
+                          className="w-4 h-4 animate-premium-spin"
+                        />
                         Creating account...
                       </div>
                     ) : (

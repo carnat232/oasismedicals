@@ -94,11 +94,14 @@ const HeroSlideshow = () => {
             <div className="space-y-6">
               {/* Logo */}
               <div className="mb-8 mt-4">
-                <img 
-                  src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
-                  alt="O.A.S.I.S MEDICALS" 
-                  className="h-32 md:h-40 lg:h-48 mx-auto mb-4 animate-fade-in"
-                />
+                <div className="relative inline-block">
+                  <img 
+                    src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+                    alt="O.A.S.I.S MEDICALS" 
+                    className="h-32 md:h-40 lg:h-48 mx-auto mb-4 animate-fade-in hover:animate-premium-spin transition-all duration-300 filter drop-shadow-2xl"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-medical-cyan/20 to-medical-magenta/20 opacity-0 hover:opacity-100 transition-opacity duration-300 animate-premium-glow"></div>
+                </div>
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-white">{slides[currentSlide].title.split(' ').slice(0, -3).join(' ')} </span>
