@@ -71,9 +71,13 @@ const Auth = () => {
       setError(error.message);
     } else {
       toast({
-        title: "Account created!",
-        description: "Please check your email for verification.",
+        title: "Welcome to O.A.S.I.S. MEDICALS!",
+        description: "Your account has been created successfully. Redirecting to your dashboard...",
       });
+      // Redirect to dashboard after successful signup
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
     }
     setLoading(false);
   };

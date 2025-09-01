@@ -30,14 +30,17 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-3">
-          <img 
-            src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
-            alt="O.A.S.I.S MEDICALS" 
-            className="h-10 w-auto hover-scale"
-          />
+        <Link to="/" className="flex items-center space-x-3 group">
+          <div className="relative">
+            <img 
+              src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+              alt="O.A.S.I.S MEDICALS" 
+              className="h-10 w-auto transition-transform duration-300 group-hover:animate-logo-spin filter drop-shadow-lg"
+            />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-medical-cyan/20 to-medical-magenta/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+          </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground">O.A.S.I.S. MEDICALS</h1>
+            <h1 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">O.A.S.I.S. MEDICALS</h1>
             <p className="text-xs text-muted-foreground">...Your Health is our concern.</p>
           </div>
         </Link>

@@ -8,6 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, FileText, User, LogOut, TestTube, Clock, CheckCircle } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 interface Profile {
   id: string;
@@ -131,29 +133,27 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b bg-card">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <img 
-              src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
-              alt="O.A.S.I.S MEDICALS" 
-              className="h-10"
-            />
-            <div>
-              <h1 className="text-xl font-bold">Patient Dashboard</h1>
-              <p className="text-sm text-muted-foreground">
-                Welcome, {profile?.first_name || user?.email}
-              </p>
+      <Navbar />
+      
+      <div className="pt-20">
+        <div className="bg-gradient-to-r from-medical-cyan/10 to-medical-magenta/10 py-8">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-3xl font-bold text-foreground">Patient Dashboard</h1>
+                <p className="text-muted-foreground mt-2">
+                  Welcome back, {profile?.first_name || user?.email?.split('@')[0]}
+                </p>
+              </div>
+              <Button variant="outline" onClick={handleSignOut} className="hover-scale">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </Button>
             </div>
           </div>
-          <Button variant="outline" onClick={handleSignOut}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Sign Out
-          </Button>
         </div>
-      </header>
 
-      <main className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="overview" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -362,6 +362,9 @@ const Dashboard = () => {
           </TabsContent>
         </Tabs>
       </main>
+      
+      <Footer />
+      </div>
     </div>
   );
 };

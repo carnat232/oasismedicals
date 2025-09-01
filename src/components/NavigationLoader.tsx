@@ -11,16 +11,17 @@ const NavigationLoader = ({ isVisible, targetSection }: NavigationLoaderProps) =
   return (
     <div className="fixed inset-0 z-[100] bg-gradient-to-br from-medical-cyan/95 to-medical-magenta/95 backdrop-blur-sm flex items-center justify-center">
       <div className="text-center space-y-8">
-        {/* Animated Logo */}
+        {/* Premium Animated Logo */}
         <div className="relative">
-          <img 
-            src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
-            alt="O.A.S.I.S MEDICALS" 
-            className="h-24 md:h-32 mx-auto animate-pulse"
-          />
-          <div className="absolute inset-0 animate-ping">
-            <div className="w-full h-full rounded-full bg-white/20"></div>
+          <div className="relative overflow-hidden rounded-full p-4">
+            <img 
+              src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
+              alt="O.A.S.I.S MEDICALS" 
+              className="h-24 md:h-32 mx-auto animate-premium-spin filter drop-shadow-2xl"
+            />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/20 to-transparent animate-premium-shimmer"></div>
           </div>
+          <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-medical-cyan/30 to-medical-magenta/30 animate-premium-glow"></div>
         </div>
 
         {/* Brand Name */}
