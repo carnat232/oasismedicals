@@ -29,14 +29,14 @@ const PremiumLoadingScreen = ({
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center ${
+    <div className={`fixed inset-0 z-[9999] flex items-center justify-center min-h-screen ${
       overlay 
         ? 'bg-gradient-to-br from-medical-cyan/20 via-background/95 to-medical-magenta/20 backdrop-blur-sm' 
         : 'bg-background'
     }`}>
-      <div className="text-center space-y-8 animate-fade-in">
+      <div className="text-center space-y-8 animate-fade-in flex flex-col items-center justify-center">
         {/* Premium Spinning Logo at Center */}
-        <div className="relative flex justify-center items-center min-h-[200px] w-full">
+        <div className="relative flex justify-center items-center min-h-[200px] w-full max-w-md">
           {/* Outer glow ring */}
           <div className="absolute w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-r from-medical-cyan/30 to-medical-magenta/30 animate-premium-glow blur-lg"></div>
           
