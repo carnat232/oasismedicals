@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { useNavigationWithLoading } from '@/hooks/useNavigationWithLoading';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -9,10 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, UserPlus, LogIn, Mail, Lock, User } from 'lucide-react';
+import PremiumLoadingScreen from '@/components/PremiumLoadingScreen';
 
 const Auth = () => {
   const { signIn, signUp } = useAuth();
-  const navigate = useNavigate();
+  const { navigateWithLoading, isNavigating, targetSection } = useNavigationWithLoading();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,7 +45,7 @@ const Auth = () => {
         title: "Welcome back!",
         description: "You have been signed in successfully.",
       });
-      navigate('/dashboard');
+      navigateWithLoading('/dashboard', 'Dashboard');
     }
     setLoading(false);
   };
@@ -76,7 +77,7 @@ const Auth = () => {
       });
       // Redirect to dashboard after successful signup
       setTimeout(() => {
-        navigate('/dashboard');
+        navigateWithLoading('/dashboard', 'Dashboard');
       }, 1000);
     }
     setLoading(false);
@@ -94,7 +95,7 @@ const Auth = () => {
         {/* Back Button */}
         <Button 
           variant="ghost" 
-          onClick={() => navigate('/')}
+          onClick={() => navigateWithLoading('/', 'Home')}
           className="mb-6 group hover:bg-medical-cyan/10 transition-all duration-300"
         >
           <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform duration-300" />
@@ -308,6 +309,11 @@ const Auth = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <PremiumLoadingScreen 
+        isVisible={isNavigating}
+        message={`Navigating to ${targetSection}`}
+      />
     </div>
   );
 };

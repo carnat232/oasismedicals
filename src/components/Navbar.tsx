@@ -1,27 +1,13 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useNavigationWithLoading } from "@/hooks/useNavigationWithLoading";
 import PremiumLoadingScreen from "./PremiumLoadingScreen";
 
 const Navbar = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
-  const [isNavigating, setIsNavigating] = useState(false);
-  const [targetSection, setTargetSection] = useState<string>("");
-
-  const handleNavigation = (path: string, sectionName: string) => {
-    setTargetSection(sectionName);
-    setIsNavigating(true);
-    
-    setTimeout(() => {
-      setIsNavigating(false);
-      navigate(path);
-      setTargetSection("");
-    }, 800);
-  };
+  const { navigateWithLoading, isNavigating, targetSection } = useNavigationWithLoading();
 
   const openWhatsApp = () => {
     window.open('https://wa.me/2348058135226', '_blank');
@@ -31,7 +17,7 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <button 
-          onClick={() => handleNavigation('/', 'Home')}
+          onClick={() => navigateWithLoading('/', 'Home')}
           className="flex items-center space-x-3 group"
         >
           <div className="relative">
@@ -50,37 +36,37 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center space-x-8">
           <button 
-            onClick={() => handleNavigation('/', 'Home')}
+            onClick={() => navigateWithLoading('/', 'Home')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Home
           </button>
           <button 
-            onClick={() => handleNavigation('/services', 'Services')}
+            onClick={() => navigateWithLoading('/services', 'Services')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Services
           </button>
           <button 
-            onClick={() => handleNavigation('/pricing', 'Pricing')}
+            onClick={() => navigateWithLoading('/pricing', 'Pricing')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Pricing
           </button>
           <button 
-            onClick={() => handleNavigation('/about', 'About')}
+            onClick={() => navigateWithLoading('/about', 'About')}
             className="text-foreground hover:text-primary transition-colors"
           >
             About
           </button>
           <button 
-            onClick={() => handleNavigation('/contact', 'Contact')}
+            onClick={() => navigateWithLoading('/contact', 'Contact')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Contact
           </button>
           <button 
-            onClick={() => handleNavigation('/gallery', 'Gallery')}
+            onClick={() => navigateWithLoading('/gallery', 'Gallery')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Gallery
@@ -97,7 +83,7 @@ const Navbar = () => {
               <Button 
                 variant="outline"
                 size="sm"
-                onClick={() => handleNavigation('/dashboard', 'Dashboard')}
+                onClick={() => navigateWithLoading('/dashboard', 'Dashboard')}
               >
                 Dashboard
               </Button>
@@ -111,7 +97,7 @@ const Navbar = () => {
               <Button 
                 variant="outline"
                 size="sm"
-                onClick={() => handleNavigation('/auth', 'Patient Login')}
+                onClick={() => navigateWithLoading('/auth', 'Patient Login')}
               >
                 Patient Login
               </Button>

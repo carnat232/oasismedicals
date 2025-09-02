@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
-import { supabase } from '@/integrations/supabase/client';
+import { useNavigationWithLoading } from '@/hooks/useNavigationWithLoading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, FileText, User, LogOut, TestTube, Clock, CheckCircle } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
+import { Calendar, FileText, User, Phone, Mail, MapPin, LogOut, Stethoscope, Activity, TestTube } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PremiumLoadingScreen from '@/components/PremiumLoadingScreen';
@@ -41,7 +42,7 @@ interface Booking {
 
 const Dashboard = () => {
   const { user, signOut, loading } = useAuth();
-  const navigate = useNavigate();
+  const { navigateWithLoading, isNavigating, targetSection } = useNavigationWithLoading();
   const { toast } = useToast();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [medicalRecords, setMedicalRecords] = useState<MedicalRecord[]>([]);
@@ -50,9 +51,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!loading && !user) {
-      navigate('/auth');
+      navigateWithLoading('/auth', 'Patient Login');
     }
-  }, [user, loading, navigate]);
+  }, [user, loading, navigateWithLoading]);
 
   useEffect(() => {
     if (user) {
@@ -104,7 +105,7 @@ const Dashboard = () => {
         variant: "destructive",
       });
     } else {
-      navigate('/');
+      navigateWithLoading('/', 'Home');
     }
   };
 
@@ -359,6 +360,11 @@ const Dashboard = () => {
       
       <Footer />
       </div>
+      
+      <PremiumLoadingScreen 
+        isVisible={isNavigating}
+        message={`Navigating to ${targetSection}`}
+      />
     </div>
   );
 };
