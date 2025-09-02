@@ -36,14 +36,18 @@ const PremiumLoadingScreen = ({
     }`}>
       <div className="text-center space-y-8 animate-fade-in">
         {/* Premium Spinning Logo at Center */}
-        <div className="relative flex justify-center items-center">
+        <div className="relative flex justify-center items-center min-h-[200px] w-full">
           {/* Outer glow ring */}
           <div className="absolute w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-r from-medical-cyan/30 to-medical-magenta/30 animate-premium-glow blur-lg"></div>
           
-          {/* Middle spinning ring */}
-          <div className="absolute w-28 h-28 md:w-36 md:h-36 rounded-full border-2 border-gradient-to-r from-medical-cyan/50 to-medical-magenta/50 animate-spin"></div>
+          {/* Middle spinning ring with gradient border effect */}
+          <div className="absolute w-28 h-28 md:w-36 md:h-36 rounded-full animate-spin">
+            <div className="w-full h-full rounded-full border-2 border-transparent bg-gradient-to-r from-medical-cyan/50 to-medical-magenta/50 p-[2px]">
+              <div className="h-full w-full rounded-full bg-background/50 backdrop-blur-sm"></div>
+            </div>
+          </div>
           
-          {/* Logo container with premium spin */}
+          {/* Logo container with premium spin - perfectly centered */}
           <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-6 md:p-8 shadow-2xl">
             <img 
               src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import PremiumLoadingScreen from "./PremiumLoadingScreen";
 
@@ -30,7 +30,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-3 group">
+        <button 
+          onClick={() => handleNavigation('/', 'Home')}
+          className="flex items-center space-x-3 group"
+        >
           <div className="relative">
             <img 
               src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
@@ -43,7 +46,7 @@ const Navbar = () => {
             <h1 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">O.A.S.I.S. MEDICALS</h1>
             <p className="text-xs text-muted-foreground">...Your Health is our concern.</p>
           </div>
-        </Link>
+        </button>
 
         <div className="hidden md:flex items-center space-x-8">
           <button 
@@ -94,7 +97,7 @@ const Navbar = () => {
               <Button 
                 variant="outline"
                 size="sm"
-                onClick={() => navigate('/dashboard')}
+                onClick={() => handleNavigation('/dashboard', 'Dashboard')}
               >
                 Dashboard
               </Button>
@@ -108,7 +111,7 @@ const Navbar = () => {
               <Button 
                 variant="outline"
                 size="sm"
-                onClick={() => navigate('/auth')}
+                onClick={() => handleNavigation('/auth', 'Patient Login')}
               >
                 Patient Login
               </Button>
