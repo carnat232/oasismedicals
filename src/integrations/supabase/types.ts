@@ -92,6 +92,48 @@ export type Database = {
         }
         Relationships: []
       }
+      payments: {
+        Row: {
+          created_at: string
+          id: string
+          metadata: Json | null
+          payment_method: string
+          paystack_reference: string
+          paystack_transaction_id: string | null
+          service_name: string
+          service_price: number
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          payment_method: string
+          paystack_reference: string
+          paystack_transaction_id?: string | null
+          service_name: string
+          service_price: number
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          payment_method?: string
+          paystack_reference?: string
+          paystack_transaction_id?: string | null
+          service_name?: string
+          service_price?: number
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           address: string | null

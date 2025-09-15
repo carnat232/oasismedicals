@@ -5,6 +5,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Input } from "@/components/ui/input";
 import { Heart, TestTube, Activity, X, Search, ChevronDown, MessageCircle, Thermometer, Users, UserCheck, Stethoscope } from "lucide-react";
 import { useState } from "react";
+import PaymentDialog from "./PaymentDialog";
 
 const PricingDetails = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,6 +14,7 @@ const PricingDetails = () => {
     fever: true,
     menPackages: true
   });
+  const [paymentDialog, setPaymentDialog] = useState({ open: false, serviceName: "", servicePrice: 0 });
 
   const toggleCategory = (category: string) => {
     setOpenCategories(prev => ({
@@ -276,6 +278,16 @@ const PricingDetails = () => {
     window.open('https://wa.me/2348058135226', '_blank');
   };
 
+  const handleBookService = (serviceName: string, priceString: string) => {
+    if (priceString === "CALL") {
+      openWhatsApp();
+      return;
+    }
+    // Convert price string like "₦15,000" to number
+    const priceNumber = parseInt(priceString.replace(/[₦,]/g, ''));
+    setPaymentDialog({ open: true, serviceName, servicePrice: priceNumber });
+  };
+
   // Filter tests based on search term
   const filteredCategories = Object.entries(pricingData).reduce((acc, [key, category]) => {
     const filteredTests = category.tests.filter(test =>
@@ -349,29 +361,36 @@ const PricingDetails = () => {
                   <CollapsibleContent>
                     <CardContent className="p-0">
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0">
-                        {category.tests.map((test, index) => (
-                          <div 
-                            key={index} 
-                            className="p-4 border-b border-r border-gray-100 hover:bg-gray-50 transition-colors group"
-                          >
-                            <div className="flex justify-between items-center">
-                              <div className="flex-1 pr-4">
-                                <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
-                                  {test.name}
-                                </h4>
-                              </div>
-                              <div className="text-right">
-                                <span className={`font-bold text-lg ${
-                                  test.price === 'CALL' 
-                                    ? 'text-accent' 
-                                    : 'text-primary'
-                                }`}>
-                                  {test.price}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                         {category.tests.map((test, index) => (
+                           <div 
+                             key={index} 
+                             className="p-4 border-b border-r border-gray-100 hover:bg-gray-50 transition-colors group"
+                           >
+                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                               <div className="flex-1 pr-4">
+                                 <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
+                                   {test.name}
+                                 </h4>
+                               </div>
+                               <div className="flex items-center gap-3">
+                                 <span className={`font-bold text-lg ${
+                                   test.price === 'CALL' 
+                                     ? 'text-accent' 
+                                     : 'text-primary'
+                                 }`}>
+                                   {test.price}
+                                 </span>
+                                 <Button 
+                                   size="sm" 
+                                   onClick={() => handleBookService(test.name, test.price)}
+                                   className="bg-primary hover:bg-primary/90 text-white"
+                                 >
+                                   {test.price === 'CALL' ? 'Call Now' : 'Book Now'}
+                                 </Button>
+                               </div>
+                             </div>
+                           </div>
+                         ))}
                       </div>
                       
                       <div className="p-6 bg-gradient-to-r from-gray-50 to-white">
@@ -424,6 +443,13 @@ const PricingDetails = () => {
           </CardContent>
         </Card>
       </div>
+
+      <PaymentDialog
+        open={paymentDialog.open}
+        onOpenChange={(open) => setPaymentDialog(prev => ({ ...prev, open }))}
+        serviceName={paymentDialog.serviceName}
+        servicePrice={paymentDialog.servicePrice}
+      />
     </section>
   );
 };
