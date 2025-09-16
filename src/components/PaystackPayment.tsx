@@ -60,6 +60,12 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
     setLoading(true);
     
     try {
+      // Check if Paystack is loaded
+      if (!window.PaystackPop) {
+        toast.error('Payment system not loaded. Please refresh the page.');
+        return;
+      }
+
       // Create payment record in database
       const paymentData = {
         user_id: user.id,
@@ -82,18 +88,30 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
         return;
       }
 
+      // Configure channels based on payment method
+      let channels: string[] = [];
+      switch (method) {
+        case 'card':
+          channels = ['card'];
+          break;
+        case 'bank':
+          channels = ['bank'];
+          break;
+        case 'mobile_money':
+          channels = ['mobile_money'];
+          break;
+        default:
+          channels = ['card', 'bank', 'mobile_money'];
+      }
+
       // Initialize Paystack payment
-      const paystack = new window.PaystackPop();
-      
-      paystack.newTransaction({
+      const handler = window.PaystackPop.setup({
         key: 'pk_live_aaf0968d8bb41faadb8cbbb65f02a59e4f037e45',
         email: user.email,
         amount: servicePrice * 100, // Convert to kobo
         currency: 'NGN',
         ref: payment.paystack_reference,
-        channels: method === 'card' ? ['card'] : 
-                 method === 'bank' ? ['bank_transfer'] : 
-                 ['mobile_money'],
+        channels: channels,
         metadata: {
           service_name: serviceName,
           payment_id: payment.id,
@@ -109,6 +127,7 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
           });
 
           if (verifyError) {
+            console.error('Payment verification error:', verifyError);
             toast.error('Payment verification failed');
             return;
           }
@@ -121,10 +140,12 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
           onClose?.();
         }
       });
+
+      handler.openIframe();
       
     } catch (error) {
       console.error('Payment error:', error);
-      toast.error('Payment initialization failed');
+      toast.error(`Payment initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
