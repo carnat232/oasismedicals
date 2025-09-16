@@ -86,7 +86,7 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
       const paystack = new window.PaystackPop();
       
       paystack.newTransaction({
-        key: 'pk_test_b8a606d5c4356b5ca5be3b4ac9e84d0e1a1c5c1a', // Replace with your public key
+        key: 'pk_live_aaf0968d8bb41faadb8cbbb65f02a59e4f037e45',
         email: user.email,
         amount: servicePrice * 100, // Convert to kobo
         currency: 'NGN',
@@ -118,9 +118,7 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
         },
         onCancel: () => {
           toast.info('Payment cancelled');
-          onClose?.(
-
-);
+          onClose?.();
         }
       });
       
