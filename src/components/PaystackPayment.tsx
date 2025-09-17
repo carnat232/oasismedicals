@@ -38,7 +38,7 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
       description: 'Pay with your debit or credit card'
     },
     {
-      id: 'bank',
+      id: 'bank_transfer',
       name: 'Bank Transfer',
       icon: Building2,
       description: 'Transfer directly from your bank account'
@@ -97,7 +97,7 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
         case 'card':
           channels = ['card', 'bank_transfer', 'ussd', 'mobile_money', 'opay'];
           break;
-        case 'bank':
+        case 'bank_transfer':
           channels = ['bank_transfer', 'ussd', 'card', 'mobile_money', 'opay'];
           break;
         case 'mobile_money':
