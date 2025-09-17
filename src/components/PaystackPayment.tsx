@@ -88,23 +88,23 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
         return;
       }
 
-      // Configure channels - let Paystack show all available options for better UX
-      // This allows Paystack to display all payment methods available for your account
-      let channels: string[] = ['card', 'bank_transfer', 'ussd', 'mobile_money', 'opay', 'qr'];
+      // Configure channels - ensure all payment methods are available
+      // Use the exact channel names that Paystack supports
+      let channels: string[] = ['card', 'bank', 'ussd', 'mobile_money', 'opay', 'qr'];
       
-      // If user selected a specific method, prioritize it but still show others
+      // If user selected a specific method, prioritize it but show all options
       switch (method) {
         case 'card':
-          channels = ['card', 'bank_transfer', 'ussd', 'mobile_money', 'opay'];
+          channels = ['card', 'bank', 'ussd', 'mobile_money', 'opay'];
           break;
         case 'bank_transfer':
-          channels = ['bank_transfer', 'ussd', 'card', 'mobile_money', 'opay'];
+          channels = ['bank', 'ussd', 'card', 'mobile_money', 'opay'];
           break;
         case 'mobile_money':
-          channels = ['mobile_money', 'opay', 'card', 'bank_transfer', 'ussd'];
+          channels = ['mobile_money', 'opay', 'card', 'bank', 'ussd'];
           break;
         default:
-          channels = ['card', 'bank_transfer', 'ussd', 'mobile_money', 'opay', 'qr'];
+          channels = ['card', 'bank', 'ussd', 'mobile_money', 'opay', 'qr'];
       }
 
       // Initialize Paystack payment
