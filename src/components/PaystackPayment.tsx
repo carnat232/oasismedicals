@@ -63,6 +63,7 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
       // Check if Paystack is loaded
       if (!window.PaystackPop) {
         toast.error('Payment system not loaded. Please refresh the page.');
+        setLoading(false);
         return;
       }
 
@@ -85,27 +86,15 @@ const PaystackPayment: React.FC<PaystackPaymentProps> = ({
       if (paymentError) {
         console.error('Payment creation error:', paymentError);
         toast.error('Failed to create payment record');
+        setLoading(false);
         return;
       }
 
-      // Configure channels - ensure all payment methods are available
-      // Use the exact channel names that Paystack supports
-      let channels: string[] = ['card', 'bank', 'ussd', 'mobile_money', 'opay', 'qr'];
+      // Configure channels - show all available payment methods
+      let channels: string[] = ['card', 'bank', 'ussd', 'mobile_money', 'opay'];
       
-      // If user selected a specific method, prioritize it but show all options
-      switch (method) {
-        case 'card':
-          channels = ['card', 'bank', 'ussd', 'mobile_money', 'opay'];
-          break;
-        case 'bank_transfer':
-          channels = ['bank', 'ussd', 'card', 'mobile_money', 'opay'];
-          break;
-        case 'mobile_money':
-          channels = ['mobile_money', 'opay', 'card', 'bank', 'ussd'];
-          break;
-        default:
-          channels = ['card', 'bank', 'ussd', 'mobile_money', 'opay', 'qr'];
-      }
+      // Keep the same channels regardless of selected method to show all options
+      // Paystack will handle the UI based on what's available for your account
 
       // Initialize Paystack payment
       const handler = window.PaystackPop.setup({
