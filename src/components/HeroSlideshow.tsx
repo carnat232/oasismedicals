@@ -98,7 +98,7 @@ const HeroSlideshow = () => {
                   <img 
                     src="/lovable-uploads/fc70eb34-882e-4a20-9da3-39a20773fb7c.png" 
                     alt="O.A.S.I.S MEDICALS" 
-                    className="h-24 sm:h-32 md:h-40 lg:h-48 mx-auto mb-2 sm:mb-4 animate-fade-in hover:animate-premium-spin transition-all duration-300 filter drop-shadow-2xl"
+                    className="h-28 sm:h-36 md:h-48 lg:h-56 xl:h-64 mx-auto mb-2 sm:mb-4 animate-fade-in hover:animate-premium-spin transition-all duration-300 filter drop-shadow-2xl"
                   />
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-medical-cyan/20 to-medical-magenta/20 opacity-0 hover:opacity-100 transition-opacity duration-300 animate-premium-glow"></div>
                 </div>

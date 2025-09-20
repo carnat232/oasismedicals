@@ -97,7 +97,7 @@ const Footer = () => {
               <div className="flex items-start space-x-2 sm:space-x-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-muted-foreground text-sm sm:text-base break-words">Ifo, Ogun State</p>
+                  <p className="text-muted-foreground text-sm sm:text-base break-words">Lagos/Abeokuta Expressway, Iyana Ilogbo Bus Stop, Ifo LGA, Ogun State</p>
                   <p className="text-xs sm:text-sm text-muted-foreground">Nigeria</p>
                 </div>
               </div>

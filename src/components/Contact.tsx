@@ -16,7 +16,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Our Center",
-      details: ["Ifo, Ogun State", "Professional diagnostic facility"],
+      details: ["Lagos/Abeokuta Expressway, Iyana Ilogbo Bus Stop", "Ifo LGA, Ogun State"],
       action: "Get Directions"
     },
     {
@@ -34,7 +34,7 @@ const Contact = () => {
     {
       icon: Clock,
       title: "Working Hours",
-      details: ["24/7 Service Available", "Emergency support"],
+      details: ["Mon-Fri: 7:30am-7:30pm, Sat: 8:00am-7:00pm", "Sun: 1:00pm-6:00pm, Holidays: 9:00am-5:00pm"],
       action: "Book Now"
     }
   ];

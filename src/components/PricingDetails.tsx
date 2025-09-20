@@ -212,16 +212,6 @@ const PricingDetails = () => {
         { name: "Cytology", price: "CALL" }
       ]
     },
-    bloodbanking: {
-      title: "Blood Banking Service",
-      icon: Heart,
-      color: "from-red-600 to-rose-500",
-      tests: [
-        { name: "Cross matching & grouping", price: "₦3,000" },
-        { name: "Rhesus D POSITIVE", price: "₦20,000" },
-        { name: "Rhesus D NEGATIVE", price: "₦35,000" }
-      ]
-    },
     ecg: {
       title: "Electrocardiograph (ECG)",
       icon: Activity,
